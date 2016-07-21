@@ -1,6 +1,8 @@
 package org.validoc.shopping
 
 
+/** Offers are complicated. The approach I have taken is to add items to the shopping basket which are 'discounted items
+  * Each offer will scan the basket and add suitable items. Very inefficient...(N^2) but adequate for this test*/
 trait Offer[M] {
   def find(items: Seq[SaleableItem[M]]): Seq[SaleableItem[M]]
 }

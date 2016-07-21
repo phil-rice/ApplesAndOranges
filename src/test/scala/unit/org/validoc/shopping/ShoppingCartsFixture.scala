@@ -8,6 +8,4 @@ trait ShoppingCartsFixture {
 
   val nameToSaleableItem = Map("Apple" -> apple, "Orange" -> orange)
 
-
-
 }

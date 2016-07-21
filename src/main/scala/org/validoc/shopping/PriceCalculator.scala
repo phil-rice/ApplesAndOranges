@@ -1,5 +1,6 @@
 package org.validoc.shopping
 
+/** The class that calculates the price in a shopping basket */
 class PriceCalculator[M](itemFinder: ItemFinder[M], offers: List[Offer[M]] = List())(implicit val money: Money[M]) {
 
   import money._

@@ -1,13 +1,13 @@
 package unit.org.validoc.shopping
 
 import org.scalatest.{FlatSpec, Matchers}
-import org.validoc.shopping.{BogofOffer, SaleableItem, ThreeForTwoOffer}
+import org.validoc.shopping.{Offer, SaleableItem}
 
 
-class ThreeForTwoOfferSpec extends FlatSpec with Matchers with ShoppingCartsFixture{
+class ThreeForTwoOfferSpec extends FlatSpec with Matchers with ShoppingCartsFixture {
 
-  val threeForTwoOranges = new ThreeForTwoOffer[Int](orange)
-  val discountedItem = SaleableItem[Int](s"Buy two Orange get one free", -25)
+  val threeForTwoOranges = Offer.threeForThePriceOfTwo[Int](orange)
+  val discountedItem = SaleableItem[Int](s"Buy 3 Oranges get one free", -25)
 
   "A ThreeForTwoOffer" should "return a seq of three for two offers" in {
     threeForTwoOranges.find(Seq()) shouldBe Seq()

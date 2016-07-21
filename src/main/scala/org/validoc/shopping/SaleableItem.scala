@@ -1,3 +1,3 @@
 package org.validoc.shopping
 
-case class SaleableItem[M: Money](item: String, cost: M )
+case class SaleableItem[M](item: String, cost: M )

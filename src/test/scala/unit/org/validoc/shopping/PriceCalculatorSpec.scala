@@ -22,4 +22,15 @@ class PriceCalculatorSpec extends FlatSpec with Matchers with ShoppingCartsFixtu
     priceCalculator.calculatePayment("Apple", "Orange") shouldBe 85
     priceCalculator.calculatePayment("Apple", "Apple", "Orange", "Apple") shouldBe 145
   }
+
+  "A shopping trolley price calculator with Bogof and three for two offers" should "add up the values of the items, including the discounts added by the offer calculator" in {
+    val itemFinder = new ItemFinder(nameToSaleableItem)
+    val priceCalculator = new PriceCalculator[Int](itemFinder, List(Offer.bogof(apple), Offer.threeForThePriceOfTwo(orange)))
+    priceCalculator.calculatePayment("Apple") shouldBe 60
+    priceCalculator.calculatePayment("Orange") shouldBe 25
+    priceCalculator.calculatePayment("Apple", "Orange") shouldBe 85
+    priceCalculator.calculatePayment("Apple", "Apple", "Orange", "Apple") shouldBe 145
+    priceCalculator.calculatePayment("Apple", "Apple", "Orange", "Apple", "Orange") shouldBe 170
+    priceCalculator.calculatePayment("Apple", "Apple", "Orange", "Apple", "Orange", "Orange") shouldBe 170
+  }
 }
